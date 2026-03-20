@@ -1706,6 +1706,7 @@
 </div>
 </div><!-- /pageBonus -->
 
+<script src="tts.js"></script>
 <script>
 // ── Bonus data (auto-generated from NAQT docx files) ──
 // AUTO-GENERATED BONUS DATA — do not edit by hand
@@ -2141,8 +2142,6 @@ let scoreCorrect = 0;
 let scoreWrong = 0;
 let historyLog = [];
 let readSpeed = 200;
-let ttsEnabled = false;
-let ttsVoice = null;
 
 // Bonus practice state
 let isBonusMode = false;      // true when practising a bonus
@@ -2248,7 +2247,7 @@ function playQuestion() {
   if (isBuzzed || isRevealed) return;
   if (readingTimer) { stopReading(); stopTTS(); return; }
   startReading();
-  if (ttsEnabled) speakQuestion();
+  onTTSQuestionLoad(ALL_PACKETS[currentPacket].questions[currentQuestion].question);
 }
 
 function startReading() {
@@ -3457,6 +3456,5 @@ loadQuestion(false);
 
 init();
 </script>
-<script src="tts.js"></script>
 </body>
 </html>
